@@ -1,12 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hello world!</h1>
-</body>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+    <a-assets>
+      <img
+        id="environment"
+        src="./assets/environment.jpg"
+      />
+
+      <a-asset-item
+        id="ground"
+        src="./assets/floor.glb"
+      ></a-asset-item>
+
+      <a-asset-item
+        id="gallery"
+        src="./assets/gallery.glb"
+      ></a-asset-item>
+      <a-asset-item
+        id="p1"
+        src="./assets/p1.glb"
+      ></a-asset-item>
+      <a-asset-item
+        id="p2"
+        src="./assets/p2.glb"
+      ></a-asset-item>
+      <a-asset-item
+        id="p3"
+        src="./assets/p3.glb"
+      ></a-asset-item>
+      <a-asset-item
+        id="p4"
+        src="./assets/p4.glb"
+      ></a-asset-item>
+      <a-asset-item
+        id="p5"
+        src="./assets/p5.glb"
+      ></a-asset-item>
+      <a-asset-item
+        id="light"
+        src="./assets/light.glb"
+      ></a-asset-item>
+    </a-assets>
+    
+      <a-camera id="part1" position="0.5 1.6 -2" active="true" fuse="false">
+        <a-cursor></a-cursor>
+      </a-camera>
+      <a-camera
+        id="part2"
+        position="0 1.6 -6"
+        fov="60"
+        rotation="0 90 0"
+        active="false"
+        fuse="false"
+      >
+        <a-cursor></a-cursor>
+      </a-camera>
+
+      <a-entity position="-2.5 0 -1">
+        <a-entity gltf-model="#gallery"></a-entity>
+        <a-entity
+          gltf-model="#p1"
+          event-set__enter="_event: mouseenter; position: 0.2 0 0"
+          event-set__leave="_event: mouseleave; position:0 0 0"
+        >
+        </a-entity>
+
+        <a-entity
+          gltf-model="#p2"
+          event-set__enter="_event: mouseenter; position: 0 0 0.2"
+          event-set__leave="_event: mouseleave; position:0 0 0"
+        ></a-entity>
+        <a-entity
+          gltf-model="#p3"
+          event-set__enter="_event: mouseenter; position: -0.2 0 0"
+          event-set__leave="_event: mouseleave; position:0 0 0"
+          event-set__tarcam="_event: click; _target:#part1 ;camera.active:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#p4"
+          event-set__enter="_event: mouseenter; position: -0.2 0 0"
+          event-set__leave="_event: mouseleave; position:0 0 0"
+          event-set__tarcam="_event: click; _target:#part2 ;camera.active:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#p5"
+          event-set__enter="_event: mouseenter; position: 0 0 0.2"
+          event-set__leave="_event: mouseleave; position:0 0 0"
+        ></a-entity>
+        <a-entity gltf-model="#light"></a-entity>
+        <a-entity gltf-model="#ground"></a-entity>
+      </a-entity>
+      <a-sky src="#environment"></a-sky>
+    </a-scene>
+  </body>
 </html>
