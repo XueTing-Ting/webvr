@@ -3,7 +3,7 @@
   <head>
     <title>3d scene</title>
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <!-- <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script> -->
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
   </head>
@@ -77,8 +77,7 @@
         <!-- <a-entity gltf-model="#gallery"></a-entity> -->
         <a-entity
           gltf-model="#p1"
-          event-set__enter="_event: mouseenter; position: 0.2 0 0"
-          event-set__leave="_event: mouseleave; position:0 0 0"
+          
           checkpoint="offset:2 0 -2"
         >
         </a-entity>
@@ -110,7 +109,7 @@
         <a-entity gltf-model="#light"></a-entity>
         <a-entity gltf-model="#ground"></a-entity> -->
       <!-- </a-entity> -->
-      <a-sky src="#environment"></a-sky>
+      <!-- <a-sky src="#environment"></a-sky> -->
     </a-scene>
   </body>
 </html>
