@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="bg" src="./assets/gallery.jpg">
+        <img id="interior" src="./assets/interior.jpg">
+      </a-assets>
+      <a-camera position="0 0 -1">
+        <a-cursor></a-cursor>
+      </a-camera>
+      <a-sky src="#bg"></a-sky>
+      <a-link id="interior" href="interior.html" title="Interior" position="-2 0 -5" image="#interior"></a-link>
+      <a-link id="boxspace" href="boxspace.html" title="Boxspace" position="2 0 -5" titleColor=red></a-link>
+    </a-scene>
+  </body>
+</html>
