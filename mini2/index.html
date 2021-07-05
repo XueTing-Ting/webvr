@@ -50,7 +50,18 @@
         src="./assets/light.glb"
       ></a-asset-item>
     </a-assets>
+ <!-- Camera Rig -->
+ <a-entity
+ id="cam-rig"
+ movement-controls="controls: checkpoint"
+ checkpoint-controls="mode:animate; animateSpeed:13.0"
+>
+<!-- Progressive Controls -->
 
+<a-entity progressive-controls>
+
+</a-entity>
+</a-entity>
       
       <a-entity position="-2.5 0 -1">
         <a-entity gltf-model="#gallery"></a-entity>
@@ -80,29 +91,7 @@
         <a-entity gltf-model="#ground"></a-entity> 
       </a-entity>
 
-          <!-- Camera Rig -->
-    <a-entity
-    id="cam-rig"
-    movement-controls="controls: checkpoint"
-    checkpoint-controls="mode:animate; animateSpeed:13.0"
-    event-set__start="
-      _target:#blink;
-      _event:navigation-start; 
-      animation.property:opacity;
-      animation.to:1;
-      animation.dur:250;
-      animation.easing:easeOutQuart"
-    event-set__end="
-      _target:#blink;
-      _event:navigation-end; 
-      animation.to:0;"
-  >
-  <!-- Progressive Controls -->
-
-  <a-entity progressive-controls>
-    <a-camera><a-image id="blink" src="#black" position="0 0 -0.3" opacity="0"></a-image></a-camera>
-  </a-entity>
-</a-entity>
+         
 
       <a-sky src="#environment"></a-sky>    
     </a-scene>
