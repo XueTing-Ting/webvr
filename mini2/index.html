@@ -13,8 +13,7 @@
         <img
           id="environment"
           src="./assets/environment.jpg"
-        >
-        <img id="black" src="assets/black.png">
+        />
 
       <a-asset-item
         id="ground"
@@ -50,19 +49,17 @@
         src="./assets/light.glb"
       ></a-asset-item>
     </a-assets>
- <!-- Camera Rig -->
- <a-entity
- id="cam-rig"
- movement-controls="controls: checkpoint"
- checkpoint-controls="mode:animate; animateSpeed:13.0"
->
-<!-- Progressive Controls -->
+    <!-- Camera Rig -->
+    <a-entity
+      id="cam-rig"
+      movement-controls="controls: checkpoint"
+      checkpoint-controls="mode:animate"
+    >
+    <!-- Progressive Controls -->
 
-<a-entity progressive-controls>
+    <a-entity progressive-controls></a-entity>
+  </a-entity>
 
-</a-entity>
-</a-entity>
-      
       <a-entity position="-2.5 0 -1">
         <a-entity gltf-model="#gallery"></a-entity>
         <a-entity
@@ -90,9 +87,6 @@
         <a-entity gltf-model="#light"></a-entity>
         <a-entity gltf-model="#ground"></a-entity> 
       </a-entity>
-
-         
-
       <a-sky src="#environment"></a-sky>    
     </a-scene>
   </body>
