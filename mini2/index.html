@@ -47,8 +47,17 @@
         src="./assets/light.glb"
       ></a-asset-item>
     </a-assets>
-    
-      <a-camera id="part1" position="0.5 1.6 -2" active="true" fuse="false">
+    <!-- Camera Rig -->
+    <a-entity
+    id="cam-rig"
+    movement-controls="controls: checkpoint"
+    checkpoint-controls="mode:animate"
+  >
+    <!-- Progressive Controls -->
+
+    <a-entity progressive-controls></a-entity>
+  </a-entity>
+      <!-- <a-camera id="part1" position="0.5 1.6 -2" active="true" fuse="false">
         <a-cursor></a-cursor>
       </a-camera>
       <a-camera
@@ -60,7 +69,7 @@
         fuse="false"
       >
         <a-cursor></a-cursor>
-      </a-camera>
+      </a-camera> -->
 
       <a-entity position="-2.5 0 -1">
         <a-entity gltf-model="#gallery"></a-entity>
@@ -68,6 +77,7 @@
           gltf-model="#p1"
           event-set__enter="_event: mouseenter; position: 0.2 0 0"
           event-set__leave="_event: mouseleave; position:0 0 0"
+          checkpoint="offset:2 0 -2"
         >
         </a-entity>
 
@@ -75,18 +85,20 @@
           gltf-model="#p2"
           event-set__enter="_event: mouseenter; position: 0 0 0.2"
           event-set__leave="_event: mouseleave; position:0 0 0"
+          checkpoint="offset:2 0 -1"
         ></a-entity>
         <a-entity
           gltf-model="#p3"
           event-set__enter="_event: mouseenter; position: -0.2 0 0"
           event-set__leave="_event: mouseleave; position:0 0 0"
-          event-set__tarcam="_event: click; _target:#part1 ;camera.active:true"
+          checkpoint="offset:3 0 -1"
+
         ></a-entity>
         <a-entity
           gltf-model="#p4"
           event-set__enter="_event: mouseenter; position: -0.2 0 0"
           event-set__leave="_event: mouseleave; position:0 0 0"
-          event-set__tarcam="_event: click; _target:#part2 ;camera.active:true"
+          checkpoint="offset:3 0 -4"
         ></a-entity>
         <a-entity
           gltf-model="#p5"
