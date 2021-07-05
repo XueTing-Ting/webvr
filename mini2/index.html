@@ -3,7 +3,7 @@
   <head>
     <title>3d scene</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <!-- <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script> -->
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
   </head>
@@ -13,7 +13,8 @@
         <img
           id="environment"
           src="./assets/environment.jpg"
-        />
+        >
+        <img id="black" src="assets/black.png">
 
       <a-asset-item
         id="ground"
@@ -49,17 +50,8 @@
         src="./assets/light.glb"
       ></a-asset-item>
     </a-assets>
-    <!-- Camera Rig -->
-    <a-entity
-      id="cam-rig"
-      movement-controls="controls: checkpoint"
-      checkpoint-controls="mode:animate"
-    >
-    <!-- Progressive Controls -->
 
-    <a-entity progressive-controls></a-entity>
-  </a-entity>
-
+      
       <a-entity position="-2.5 0 -1">
         <a-entity gltf-model="#gallery"></a-entity>
         <a-entity
@@ -87,6 +79,31 @@
         <a-entity gltf-model="#light"></a-entity>
         <a-entity gltf-model="#ground"></a-entity> 
       </a-entity>
+
+          <!-- Camera Rig -->
+    <a-entity
+    id="cam-rig"
+    movement-controls="controls: checkpoint"
+    checkpoint-controls="mode:animate; animateSpeed:13.0"
+    event-set__start="
+      _target:#blink;
+      _event:navigation-start; 
+      animation.property:opacity;
+      animation.to:1;
+      animation.dur:250;
+      animation.easing:easeOutQuart"
+    event-set__end="
+      _target:#blink;
+      _event:navigation-end; 
+      animation.to:0;"
+  >
+  <!-- Progressive Controls -->
+
+  <a-entity progressive-controls>
+    <a-camera><a-image id="blink" src="#black" position="0 0 -0.3" opacity="0"></a-image></a-camera>
+  </a-entity>
+</a-entity>
+
       <a-sky src="#environment"></a-sky>    
     </a-scene>
   </body>
