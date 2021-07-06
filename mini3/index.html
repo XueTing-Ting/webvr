@@ -2,72 +2,99 @@
 <html>
   <head>
     <title>On-rails locomotion</title>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@5.1.2/dist/aframe-animation-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
   </head>
 
+
   <body>
-    <a-scene background="color: #FFFFFF">
-      <!-- Asset Management System -->
+    <a-scene>
       <a-assets>
-        <img
-          id="footsteps"
-          src="./assets/footsteps.png"
-        />
-        <a-asset-item id="art" src="./assets/p1.glb"></a-asset-item>
+        <img id="close" src="./assets/cancel.png">
+        <img id="p1" src="./assets/p1.jpg">
+        <img id="p2" src="./assets/p2.jpg">
+        <img id="p3" src="./assets/p3.jpg">
       </a-assets>
 
-      <!-- Camera Rig -->
-      <a-entity
-        id="cam-rig"
-        movement-controls="controls: checkpoint"
-        checkpoint-controls="mode:animate"
-      >
-        <!-- Progressive Controls -->
-
-        <a-entity progressive-controls></a-entity>
+       <!-- Camera Rig -->
+    <a-entity
+      id="cam-rig"
+      movement-controls="controls: checkpoint"
+      checkpoint-controls="mode:animate"
+  >
+  <!-- Progressive Controls -->
+      <a-entity progressive-controls>
+       <a-camera id="cam">
+         <a-cursor></a-cursor>
+       </a-camera>
       </a-entity>
+    </a-entity>
 
-      <!-- Ground -->
-      <a-plane color="#DDDDDD" shader="flat" rotation="-90 0 0" scale="10 40 1">
-      </a-plane>
+    <!-- box panels -->
+    <a-box id="panel_1"
+   src="#p1"
+    position="-1 1.6 -2" 
+    width="0.5"
+    height="0.7"
+    depth="0.02"
+    checkpoint="offset:0 -1.6 1"
+    event-set__showpanel1="_event:click;_target:#intro_1;visible:true"
+    ></a-box>
 
-      <!-- Blue Box -->
-      <a-box color="#00AAFF" position="-3 0.5 -16"></a-box>
-      <!--       <a-image
-        src="#footsteps"
-        position="-3 2.5 -16"
+    <a-box id="panel_2"
+    src="#p2"
+     position="0 1.6 -2" 
+     width="0.5"
+     height="0.7"
+     depth="0.02"
+     checkpoint="offset:0 -1.6 1"
+     event-set__showpanel2="_event:click;_target:#intro_2;visible:true"
+     ></a-box>
 
-      ></a-image> -->
+     <a-box id="panel_3"
+     src="#p3"
+      position="1 1.6 -2" 
+      width="0.5"
+      height="0.7"
+      depth="0.02"
+      checkpoint="offset:0 -1.6 1"
+      event-set__showpanel3="_event:click;_target:#intro_3;visible:true"
+      ></a-box>
 
-      <!-- Green Box -->
-      <a-box color="#00AA00" position="3 0.5 -16"></a-box>
-      <!--       <a-image
-        src="#footsteps"
-        position="3 2.5 -16"
- 
-      ></a-image> -->
+      <!-- intro panel -->
+    <a-entity id="intro_1"
+    visible="false"
+    position="-1 1.6 -1.5" 
+    text="value:Hi There!\n This is some introduction of project 1; color:#333; align:left; wrapCount:40; xOffset:0.1; font:	https://cdn.aframe.io/fonts/Exo2Bold.fnt"
+    geometry="primitive:plane; width:auto;height:0.2"
+    material="color:#DDD; shader:flat"
+    look-at="#cam"
+    event-set__hidepanel1="_event:click;_target:#intro_1;visible:false"
+    ></a-entity>
 
-      <!-- Yellow Box -->
-      <a-box color="#FFAA00" position="-3 0.5 -8"></a-box>
-      <!--       <a-image
-        src="#footsteps"
-        position="-3 2.5 -8"
-        checkpoint="offset:-1 -2.5 2"
-      ></a-image> -->
+    <a-entity id="intro_2"
+    visible="false"
+    position="0 1.6 -1.5" 
+    text="value:Hi There!\n This is some introduction of project 2; color:#333; align:left; wrapCount:40; xOffset:0.1; font:	https://cdn.aframe.io/fonts/Exo2Bold.fnt"
+    geometry="primitive:plane; width:auto;height:0.2"
+    material="color:#DDD; shader:flat"
+    look-at="#cam"
+    event-set__hidepanel2="_event:click;visible:false"
+    ></a-entity>
 
-      <!-- Red Box -->
-      <a-box color="#AA0000" position="3 0.5 -8"></a-box>
-            <a-image
-        src="#footsteps"
-        position="3 2.5 -8"
-        checkpoint="offset:-1 -2.5 2"
-      ></a-image>
-      
-      <!-- 3d model-->
-      <a-entity gltf-model="#art" rotation="0 -90 0" position="-1.5 0 -3" checkpoint="offset:1.5 0 1"></a-entity>
+    <a-entity id="intro_3"
+    visible="false"
+    position="1 1.6 -1.5" 
+    text="value:Hi There!\n This is some introduction of project 3; color:#333; align:left; wrapCount:40; xOffset:0.1; font:	https://cdn.aframe.io/fonts/Exo2Bold.fnt"
+    geometry="primitive:plane; width:auto;height:0.2"
+    material="color:#DDD; shader:flat"
+    look-at="#cam"
+    event-set__hidepanel3="_event:click;visible:false"
+    ></a-entity>
     </a-scene>
   </body>
 </html>
