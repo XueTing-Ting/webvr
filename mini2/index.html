@@ -28,32 +28,22 @@
       <a-asset-item
         id="p1"
         src="./assets/p1.glb"
-        event-set__enter="_event: mouseenter; position: 0.2 0 0"
-        event-set__leave="_event: mouseleave; position:0 0 0"
       ></a-asset-item>
       <a-asset-item
         id="p2"
         src="./assets/p2.glb"
-        event-set__enter="_event: mouseenter; position: 0 0 0.2"
-        event-set__leave="_event: mouseleave; position:0 0 0"
       ></a-asset-item>
       <a-asset-item
         id="p3"
         src="./assets/p3.glb"
-        event-set__enter="_event: mouseenter; position: -0.2 0 0"
-        event-set__leave="_event: mouseleave; position:0 0 0"
       ></a-asset-item>
       <a-asset-item
         id="p4"
         src="./assets/p4.glb"
-        event-set__enter="_event: mouseenter; position: -0.2 0 0"
-        event-set__leave="_event: mouseleave; position:0 0 0"
       ></a-asset-item>
       <a-asset-item
         id="p5"
         src="./assets/p5.glb"
-        event-set__enter="_event: mouseenter; position: 0 0 0.2"
-        event-set__leave="_event: mouseleave; position:0 0 0"
       ></a-asset-item>
       <a-asset-item
         id="light"
@@ -76,6 +66,8 @@
         <a-entity
           gltf-model="#p1"
           checkpoint="offset:2 0 -2"
+          event-set__enter="_event: mouseenter; position: 0.2 0 0"
+          event-set__leave="_event: mouseleave; position:0 0 0"
         >
         </a-entity>
 
