@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+
+    <script>
+      AFRAME.registerComponent('navigate-on-click', {
+        schema: {
+          url: {default: ''}
+        },
+    
+        init: function () {
+          var data = this.data;
+          var el = this.el;
+    
+          el.addEventListener('click', function () {
+            window.location.href = data.url;
+          });
+        }
+      });        
+    </script>
+
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="bg" src="./assets/gallery.jpg">
+        <img id="interior" src="./assets/interior.jpg">
+      </a-assets>
+      <a-camera position="0 0 -1">
+        <a-cursor></a-cursor>
+      </a-camera>
+      <a-sky src="#bg"></a-sky>
+      <a-entity
+        geometry="primitive: plane; width: 0.5; height: 1"
+        material="color: red"
+        text="value: Interior; align:center; width:2;color:white"
+        position="-0.5 0 -2"
+        navigate-on-click="url: interior.html"></a-entity>
+
+        <a-entity
+        geometry="primitive: plane; width: 0.5; height: 1"
+        material="color: blue"
+        text="value: Boxspace; align:center; width:2;color:white"
+        position="0.5 0 -2"
+        navigate-on-click="url: boxspace.html"></a-entity>
+      <!-- <a-box id="interior" navigate-on-click="url: interior.html" position="-1 0 -2" color="red"></a-box>
+      <a-box id="boxspace" navigate-on-click="url: boxspace.html" position="1 0 -2" color="blue"></a-box> -->
+      
+    </a-scene>
+  </body>
+</html>

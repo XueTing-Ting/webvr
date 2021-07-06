@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>red</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+  <script>
+    AFRAME.registerComponent('navigate-on-click', {
+      schema: {
+        url: {default: ''}
+      },
+  
+      init: function () {
+        var data = this.data;
+        var el = this.el;
+  
+        el.addEventListener('click', function () {
+          window.location.href = data.url;
+        });
+      }
+    });        
+  </script>
+
+</head>
+<body>
+  <a-scene>
+    <a-assets>
+      <img id="bg" src="./assets/gallery.jpg">
+      <img id="interior" src="./assets/interior.jpg">
+    </a-assets>
+    <a-camera position="0 0 -1">
+      <a-cursor></a-cursor>
+    </a-camera>
+    <a-sky src="#interior"></a-sky>
+
+    <a-entity
+    geometry="primitive: plane; width: 1; height: 2"
+    material="color: yellow"
+    text="value: Homepage; align:center; width:4;color:black"
+    position="0 0 -10"
+    navigate-on-click="url: index.html"></a-entity>
+    <!-- <a-box id="home" navigate-on-click="url: index.html" position="0 0 -2" color="green"></a-box> -->
+    <!-- <a-link href="index.html" position="0 0 -3" title="Home" image="#bg"></a-link> -->
+</body>
+</html>
