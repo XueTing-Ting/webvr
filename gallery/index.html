@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <title>Gallery</title>
+</head>
+<body>
+  <a-scene>
+    <a-assets>
+      <a-asset-item
+        id="gallery"
+        src="./assets/gallery/gltf/gallery.glb"
+      ></a-asset-item>
+      <a-asset-item
+        id="teahouse_s"
+        src="./assets/gallery/gltf/teahouse_s.glb"
+      ></a-asset-item>
+      <a-asset-item
+        id="moma_s"
+        src="./assets/gallery/gltf/moma_s.glb"
+      ></a-asset-item>
+      <a-asset-item
+        id="interior_s"
+        src="./assets/gallery/gltf/interior_s.glb"
+      ></a-asset-item>
+      <!-- img of p1 -->
+      <img id="p1_1" src="./assets/p1/panel-05.jpg">
+      <img id="p1_2" src="./assets/p1/panel-01.jpg">
+      <img id="p1_3" src="./assets/p1/panel-02.jpg">
+      <img id="p1_4" src="./assets/p1/panel-03.jpg">
+      <img id="p1_5" src="./assets/p1/panel-04.jpg">
+      <!-- img of p2 -->
+      <img id="p2_1" src="./assets/p2/panel-05.jpg">
+      <img id="p2_2" src="./assets/p2/panel-01.jpg">
+      <img id="p2_3" src="./assets/p2/panel-02.jpg">
+      <img id="p2_4" src="./assets/p2/panel-03.jpg">
+      <img id="p2_5" src="./assets/p2/panel-04.jpg">
+      <!-- img of p3 -->
+      <img id="p3_1" src="./assets/p3/panel-03.jpg">
+      <img id="p3_2" src="./assets/p3/panel-01.jpg">
+      <img id="p3_3" src="./assets/p3/panel-02.jpg">
+
+      <!-- ground and sky -->
+      <img id="sky" src="./assets/gallery/space.jpg">
+    </a-assets>
+    <a-camera position="0 1.6 -8"></a-camera>
+    <a-entity light="type: ambient; color: #CCC; intensity:0.5"></a-entity>
+    <a-entity
+      light="type: point; intensity: 0.75; distance: 50; decay: 3"
+      position="0 3 -5"
+    ></a-entity>
+    <a-sky src="#sky"></a-sky>
+    <a-entity position="0 0 -1">
+      <a-entity gltf-model="#gallery"></a-entity>
+      <a-entity gltf-model="#teahouse_s"></a-entity>
+      <a-entity gltf-model="#moma_s"></a-entity>
+      <a-entity gltf-model="#interior_s"></a-entity>
+      <!-- paste poster of booth 1 -->
+      <a-entity id="p1_poster">
+        <a-box
+          position="-3.65 1.5 -4.5"
+          width="1.2"
+          height="2.4"
+          depth="0.02"
+          src="#p1_1"
+          rotation="0 90 0"
+        ></a-box>
+        <a-box
+          position="-3.65 1.6 -6.2"
+          width="1.6"
+          height="0.9"
+          depth="0.02"
+          src="#p1_2"
+          rotation="0 90 0"
+        ></a-box>
+        <a-box
+          position="-3.65 1.6 -7.8"
+          width="1.6"
+          height="0.9"
+          depth="0.02"
+          src="#p1_3"
+          rotation="0 90 0"
+        ></a-box>
+        <a-box
+          position="-3.65 1.6 -9.4"
+          width="1.6"
+          height="0.9"
+          depth="0.02"
+          src="p1_4"
+          rotation="0 90 0"
+        ></a-box>
+        <a-box
+          position="-3.65 1.6 -11"
+          width="1.6"
+          height="0.9"
+          depth="0.02"
+          src="p1_5"
+          rotation="0 90 0"
+        ></a-box>
+      </a-entity>
+
+      <a-entity id="p3_poster"
+        ><a-box
+          position="-1.4 1.5 -12"
+          width="1.2"
+          height="2.4"
+          depth="0.02"
+          src="#p3_1"
+        ></a-box>
+        <a-box
+          position="0 1.6 -12"
+          width="1.6"
+          height="0.9"
+          depth="0.02"
+          src="#p3_2"
+        ></a-box>
+        <a-box
+          position="1.6 1.6 -12"
+          width="1.6"
+          height="0.9"
+          depth="0.02"
+          src="#p3_3"
+        ></a-box
+      ></a-entity>
+
+      <a-entity id="p2_poster">
+        <a-box
+          position="3.65 1.5 -4.5"
+          width="1.2"
+          height="2.4"
+          depth="0.02"
+          src="#p2_1"
+          rotation="0 90 0"
+        ></a-box>
+        <a-box
+          position="3.65 1.6 -6.2"
+          width="1.6"
+          height="0.9"
+          depth="0.02"
+          src="#p2_2"
+          rotation="0 90 0"
+        ></a-box>
+        <a-box
+          position="3.65 1.6 -7.8"
+          width="1.6"
+          height="0.9"
+          depth="0.02"
+          src="#p2_3"
+          rotation="0 90 0"
+        ></a-box>
+        <a-box
+          position="3.65 1.6 -9.4"
+          width="1.6"
+          height="0.9"
+          depth="0.02"
+          src="#p2_4"
+          rotation="0 90 0"
+        ></a-box>
+        <a-box
+          position="3.65 1.6 -11"
+          width="1.6"
+          height="0.9"
+          depth="0.02"
+          src="#p2_5"
+          rotation="0 90 0"
+        ></a-box>
+      </a-entity>
+    </a-entity>
+  </a-scene>
+</body>
+</html>
