@@ -14,7 +14,8 @@
     <script src="https://unpkg.com/aframe-animation-component@5.1.2/dist/aframe-animation-component.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
     <script>
-        document.querySelector('#camera2').setAttribute('camera', 'active', true);
+        var secondCameraEl = document.querySelector('#second-camera');
+            secondCameraEl.setAttribute('camera', 'active', true);
     </script>
 </head>
 <body>
@@ -44,7 +45,7 @@
                 <a-entity geometry="primitive:cone; radiusBottom:1;radiusTop:0.1" position="10 10 1" event-set__click="_event:click;_target:#cam1;camera.active:true"></a-entity>
                 <a-entity geometry="primitive:cone; radiusBottom:1;radiusTop:0.1" position="5 10 1" event-set__click="_event:click;_target:#cam2;camera.active:true"></a-entity>
                 <a-entity camera="active: false" look-controls id="cam1" position="-7.4 2.7 -32"><a-cursor></a-cursor></a-entity>
-                <a-entity camera="active: false" look-controls id="cam2" position="0 6.4 -32"><a-cursor></a-cursor></a-entity>
+                <a-entity camera="active: false" look-controls id="second-camera" position="0 6.4 -32"><a-cursor></a-cursor></a-entity>
                 <!-- <a-entity geometry="primitive: cone; radiusBottom: 1; radiusTop: 0.1" position="0 3 -18.5" checkpoint></a-entity>
                 <a-entity geometry="primitive: cone; radiusBottom: 1; radiusTop: 0.1" position="0 5.9 -23" checkpoint></a-entity>
                 <a-entity geometry="primitive: cone; radiusBottom: 1; radiusTop: 0.1" position="0 6.4 -32" checkpoint></a-entity>
