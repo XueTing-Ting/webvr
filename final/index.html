@@ -6,6 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script> -->
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@5.1.2/dist/aframe-animation-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
   </head>
   <title>Gallery</title>
 </head>
@@ -29,148 +35,237 @@
         src="./assets/gallery/gltf/interior_s.glb"
       ></a-asset-item>
       <!-- img of p1 -->
-      <img id="p1_1" src="./assets/p1/panel-05.jpg">
-      <img id="p1_2" src="./assets/p1/panel-01.jpg">
-      <img id="p1_3" src="./assets/p1/panel-02.jpg">
-      <img id="p1_4" src="./assets/p1/panel-03.jpg">
-      <img id="p1_5" src="./assets/p1/panel-04.jpg">
+      <img id="p1_1" src="./assets/p1/panel-01_1.jpg">
+      <img id="p1_2" src="./assets/p1/panel-01_2.jpg">
+      <img id="p1_3" src="./assets/p1/panel-01_3.jpg">
+      <img id="p1_4" src="./assets/p1/panel-01_4.jpg">
+      <img id="p1_5" src="./assets/p1/panel-01_5.jpg">
       <!-- img of p2 -->
-      <img id="p2_1" src="./assets/p2/panel-05.jpg">
-      <img id="p2_2" src="./assets/p2/panel-01.jpg">
-      <img id="p2_3" src="./assets/p2/panel-02.jpg">
-      <img id="p2_4" src="./assets/p2/panel-03.jpg">
-      <img id="p2_5" src="./assets/p2/panel-04.jpg">
+      <img id="p2_1" src="./assets/p2/panel-05_1.jpg">
+      <img id="p2_2" src="./assets/p2/panel-05_2.jpg">
+      <img id="p2_3" src="./assets/p2/panel-05_3.jpg">
+      <img id="p2_4" src="./assets/p2/panel-05_4.jpg">
+      <img id="p2_5" src="./assets/p2/panel-05_5.jpg">
       <!-- img of p3 -->
-      <img id="p3_1" src="./assets/p3/panel-03.jpg">
-      <img id="p3_2" src="./assets/p3/panel-01.jpg">
-      <img id="p3_3" src="./assets/p3/panel-02.jpg">
+      <img id="p3_1" src="./assets/p3/panel-01_1.jpg">
+      <img id="p3_2" src="./assets/p3/panel-01_2.jpg">
+      <img id="p3_3" src="./assets/p3/panel-01_3.jpg">
 
       <!-- ground and sky -->
       <img id="sky" src="./assets/gallery/space.jpg">
+      <img id="floor" src="assets/gallery/floor.jpg">
+
+      <img id="welcome" src="./assets/gallery/welcome screen.jpg">
     </a-assets>
-    <a-camera position="0 1.6 -8"></a-camera>
-    <a-entity light="type: ambient; color: #CCC; intensity:0.5"></a-entity>
+
+     <!-- Camera Rig -->
+     <!-- <a-entity
+     id="cam-rig"
+     movement-controls="controls: checkpoint"
+     checkpoint-controls="mode:animate" -->
+ >
+    <!-- Progressive Controls -->
+     <!-- <a-entity progressive-controls>
+      <a-camera id="cam" position="0 1.6 0">
+        <a-cursor></a-cursor>
+      </a-camera>
+     </a-entity>
+    </a-entity> -->
+
+    <a-entity id="rig"
+          movement-controls="controls: checkpoint"
+          checkpoint-controls="mode: animate">
+  <a-entity camera
+            position="0 1.6 6"
+            look-controls="pointerLockEnabled: false">
+            <a-cursor></a-cursor>
+  </a-entity>
+</a-entity>
+    
+    <!-- add light -->
+    <a-entity light="type: ambient; color: #CCC; intensity:0.6"></a-entity>
     <a-entity
       light="type: point; intensity: 0.75; distance: 50; decay: 3"
       position="0 3 -5"
     ></a-entity>
+    <!-- ground and sky -->
     <a-sky src="#sky"></a-sky>
+    <a-plane src="#floor" rotation="-90 0 0" width="50" height="50" position="0 0 0"></a-plane>
+
+    <!-- welcome screen   -->
+    <a-plane material="src:#welcome; scale:0.1" opacity="0.9" width="6" height="6" position="0 1.6 4" checkpoint="offset:0 -1.6 -14"></a-plane>
+    <!-- import 3d gallery -->
     <a-entity position="0 0 -1">
       <a-entity gltf-model="#gallery"></a-entity>
       <a-entity gltf-model="#teahouse_s"></a-entity>
       <a-entity gltf-model="#moma_s"></a-entity>
       <a-entity gltf-model="#interior_s"></a-entity>
+
       <!-- paste poster of booth 1 -->
-      <a-entity id="p1_poster">
-        <a-box
-          position="-3.65 1.5 -4.5"
-          width="1.2"
-          height="2.4"
-          depth="0.02"
-          src="#p1_1"
+        <a-entity 
+          id="p1_p1"  
+          geometry="primitive: box; width:1.2;height:2.4;depth:0.02" 
+          material="src:#p1_1" 
+          position="-3.6 1.5 -4.5"
+          rotation="0 90 0">
+            <a-entity 
+            geometry="primitive: circle; radius: 0.05" 
+            material="color:#ff0; opacity:0.8" 
+            position="0 0 0.1" 
+            event-set__mouseenter="material.color: #ff0; opacity:1;scale:2 2 2" 
+            event-set__mouseleave="material.color: #ff0; opacity:0.8;scale:1 1 1"
+            checkpoint="offset:1 -1.6 -6"
+            ></a-entity>
+        </a-entity>
+        <a-entity
+          id="p1_p2"
+          geometry="primitive: box; width:1.6;height:0.9;depth:0.02" 
+          material="src:#p1_2" 
+          position="-3.6 1.6 -6.2"
+          rotation="0 90 0">
+          <a-entity 
+            geometry="primitive: circle; radius: 0.05" 
+            material="color:#ff0; opacity:0.8" 
+            position="0.8 0 0.05" 
+            event-set__mouseenter="material.color: #ff0; opacity:1;scale:2 2 2" 
+            event-set__mouseleave="material.color: #ff0; opacity:0.8;scale:1 1 1"
+            checkpoint="offset:1 -1.6 -6"
+          ></a-entity>
+        </a-entity>
+        <a-entity
+          id="p1_p3"
+          geometry="primitive: box; width:1.6;height:0.9;depth:0.02" 
+          material="src:#p1_3" 
+          position="-3.6 1.6 -7.8"
           rotation="0 90 0"
-        ></a-box>
-        <a-box
-          position="-3.65 1.6 -6.2"
-          width="1.6"
-          height="0.9"
-          depth="0.02"
-          src="#p1_2"
+        ></a-entity>
+        <a-entity
+          id="p1_p4"
+          geometry="primitive: box; width:1.6;height:0.9;depth:0.02" 
+          material="src:#p1_4" 
+          position="-3.6 1.6 -9.4"
+          rotation="0 90 0">
+          <a-entity 
+            geometry="primitive: circle; radius: 0.05" 
+            material="color:#ff0; opacity:0.8" 
+            position="0.8 0 0.05" 
+            event-set__mouseenter="material.color: #ff0; opacity:1;scale:2 2 2" 
+            event-set__mouseleave="material.color: #ff0; opacity:0.8;scale:1 1 1"
+            checkpoint="offset:1 -1.6 -6"
+          ></a-entity>
+        </a-entity>
+        <a-entity
+          id="p1_p5"
+          geometry="primitive: box; width:1.6;height:0.9;depth:0.02" 
+          material="src:#p1_5" 
+          position="-3.6 1.6 -11"
           rotation="0 90 0"
-        ></a-box>
-        <a-box
-          position="-3.65 1.6 -7.8"
-          width="1.6"
-          height="0.9"
-          depth="0.02"
-          src="#p1_3"
-          rotation="0 90 0"
-        ></a-box>
-        <a-box
-          position="-3.65 1.6 -9.4"
-          width="1.6"
-          height="0.9"
-          depth="0.02"
-          src="p1_4"
-          rotation="0 90 0"
-        ></a-box>
-        <a-box
-          position="-3.65 1.6 -11"
-          width="1.6"
-          height="0.9"
-          depth="0.02"
-          src="p1_5"
-          rotation="0 90 0"
-        ></a-box>
-      </a-entity>
+        ></a-entity>
+       
+       <!-- paste poster of booth 3 -->
+       <a-entity 
+       id="p3_p1"  
+       geometry="primitive: box; width:1.2;height:2.4;depth:0.02" 
+       material="src:#p3_1" 
+       position="-1.4 1.5 -12.5"
+       >
+         <a-entity 
+         geometry="primitive: circle; radius: 0.05" 
+         material="color:#ff0; opacity:0.8" 
+         position="0 0 0.1" 
+         event-set__mouseenter="material.color: #ff0; opacity:1;scale:2 2 2" 
+         event-set__mouseleave="material.color: #ff0; opacity:0.8;scale:1 1 1"
+         checkpoint="offset:0 -1.6 -5"
+         ></a-entity>
+     </a-entity>  
+     <a-entity
+          id="p3_p2"
+          geometry="primitive: box; width:1.6;height:0.9;depth:0.02" 
+          material="src:#p3_2" 
+          position="0 1.6 -12.5"
+          >
+          <a-entity 
+            geometry="primitive: circle; radius: 0.05" 
+            material="color:#ff0; opacity:0.8" 
+            position="0.8 0 0.05" 
+            event-set__mouseenter="material.color: #ff0; opacity:1;scale:2 2 2" 
+            event-set__mouseleave="material.color: #ff0; opacity:0.8;scale:1 1 1"
+            checkpoint="offset:0 -1.6 -5"
+          ></a-entity>
+        </a-entity>
+        <a-entity
+          id="p3_p3"
+          geometry="primitive: box; width:1.6;height:0.9;depth:0.02" 
+          material="src:#p3_3" 
+          position="1.6 1.6 -12.5"
+        ></a-entity>
 
-      <a-entity id="p3_poster"
-        ><a-box
-          position="-1.4 1.5 -12"
-          width="1.2"
-          height="2.4"
-          depth="0.02"
-          src="#p3_1"
-        ></a-box>
-        <a-box
-          position="0 1.6 -12"
-          width="1.6"
-          height="0.9"
-          depth="0.02"
-          src="#p3_2"
-        ></a-box>
-        <a-box
-          position="1.6 1.6 -12"
-          width="1.6"
-          height="0.9"
-          depth="0.02"
-          src="#p3_3"
-        ></a-box
+    <!-- paste poster of booth 2 -->
+    <a-entity 
+    id="p2_p1"  
+    geometry="primitive: box; width:1.2;height:2.4;depth:0.02" 
+    material="src:#p2_1" 
+    position="3.6 1.5 -4.5"
+    rotation="0 -90 0">
+      <a-entity 
+      geometry="primitive: circle; radius: 0.05" 
+      material="color:#ff0; opacity:0.8" 
+      position="0 0 0.1" 
+      event-set__mouseenter="material.color: #ff0; opacity:1;scale:2 2 2" 
+      event-set__mouseleave="material.color: #ff0; opacity:0.8;scale:1 1 1"
+      checkpoint="offset:-1 -1.6 -6"
       ></a-entity>
-
-      <a-entity id="p2_poster">
-        <a-box
-          position="3.65 1.5 -4.5"
-          width="1.2"
-          height="2.4"
-          depth="0.02"
-          src="#p2_1"
-          rotation="0 90 0"
-        ></a-box>
-        <a-box
-          position="3.65 1.6 -6.2"
-          width="1.6"
-          height="0.9"
-          depth="0.02"
-          src="#p2_2"
-          rotation="0 90 0"
-        ></a-box>
-        <a-box
-          position="3.65 1.6 -7.8"
-          width="1.6"
-          height="0.9"
-          depth="0.02"
-          src="#p2_3"
-          rotation="0 90 0"
-        ></a-box>
-        <a-box
-          position="3.65 1.6 -9.4"
-          width="1.6"
-          height="0.9"
-          depth="0.02"
-          src="#p2_4"
-          rotation="0 90 0"
-        ></a-box>
-        <a-box
-          position="3.65 1.6 -11"
-          width="1.6"
-          height="0.9"
-          depth="0.02"
-          src="#p2_5"
-          rotation="0 90 0"
-        ></a-box>
-      </a-entity>
     </a-entity>
+    <a-entity
+      id="p2_p2"
+      geometry="primitive: box; width:1.6;height:0.9;depth:0.02" 
+      material="src:#p2_2" 
+      position="3.6 1.6 -6.2"
+      rotation="0 -90 0">
+      <a-entity 
+        geometry="primitive: circle; radius: 0.05" 
+        material="color:#ff0; opacity:0.8" 
+        position="-0.8 0 0.05" 
+        event-set__mouseenter="material.color: #ff0; opacity:1;scale:2 2 2" 
+        event-set__mouseleave="material.color: #ff0; opacity:0.8;scale:1 1 1"
+        checkpoint="offset:-1 -1.6 -6"
+      ></a-entity>
+      </a-entity>
+    <a-entity
+      id="p2_p3"
+      geometry="primitive: box; width:1.6;height:0.9;depth:0.02" 
+      material="src:#p2_3" 
+      position="3.6 1.6 -7.8"
+      rotation="0 -90 0"
+    ></a-entity>
+    <a-entity
+      id="p2_p4"
+      geometry="primitive: box; width:1.6;height:0.9;depth:0.02" 
+      material="src:#p2_4" 
+      position="3.6 1.6 -9.4"
+      rotation="0 -90 0">
+      <a-entity 
+        geometry="primitive: circle; radius: 0.05" 
+        material="color:#ff0; opacity:0.8" 
+        position="-0.8 0 0.05" 
+        event-set__mouseenter="material.color: #ff0; opacity:1;scale:2 2 2" 
+        event-set__mouseleave="material.color: #ff0; opacity:0.8;scale:1 1 1"
+        checkpoint="offset:-1 -1.6 -6"
+      ></a-entity>
+      </a-entity>
+    <a-entity
+      id="p2_p5"
+      geometry="primitive: box; width:1.6;height:0.9;depth:0.02" 
+      material="src:#p2_5" 
+      position="3.6 1.6 -11"
+      rotation="0 -90 0"
+    ></a-entity>
+
+        
+        
+
+       
+    
   </a-scene>
 </body>
 </html>
