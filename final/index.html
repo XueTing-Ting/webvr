@@ -12,6 +12,23 @@
     <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
     <script src="https://unpkg.com/aframe-animation-component@5.1.2/dist/aframe-animation-component.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+
+    <script>
+      AFRAME.registerComponent('navigate-on-click', {
+        schema: {
+          url: {default: ''}
+        },
+    
+        init: function () {
+          var data = this.data;
+          var el = this.el;
+    
+          el.addEventListener('click', function () {
+            window.location.href = data.url;
+          });
+        }
+      });        
+    </script>
   </head>
   <title>Gallery</title>
 </head>
@@ -20,19 +37,19 @@
     <a-assets>
       <a-asset-item
         id="gallery"
-        src="./assets/gallery/gltf/gallery.glb"
+        src="./assets/gltf/gallery.glb"
       ></a-asset-item>
       <a-asset-item
         id="teahouse_s"
-        src="./assets/gallery/gltf/teahouse_s.glb"
+        src="./assets/gltf/teahouse_s.glb"
       ></a-asset-item>
       <a-asset-item
         id="moma_s"
-        src="./assets/gallery/gltf/moma_s.glb"
+        src="./assets/gltf/moma_s.glb"
       ></a-asset-item>
       <a-asset-item
         id="interior_s"
-        src="./assets/gallery/gltf/interior_s.glb"
+        src="./assets/gltf/interior_s.glb"
       ></a-asset-item>
       <!-- img of p1 -->
       <img id="p1_1" src="./assets/p1/panel-01_1.jpg">
@@ -56,6 +73,7 @@
       <img id="floor" src="assets/gallery/floor.jpg">
 
       <img id="welcome" src="./assets/gallery/welcome screen.jpg">
+      <img id="gps" src="assets/gps.png">
     </a-assets>
 
      <!-- Camera Rig -->
@@ -75,11 +93,13 @@
     <a-entity id="rig"
           movement-controls="controls: checkpoint"
           checkpoint-controls="mode: animate">
-  <a-entity camera
+  <a-camera
+            id="cam"
             position="0 1.6 0"
+            fuse="false"
             look-controls="pointerLockEnabled: false">
             <a-cursor></a-cursor>
-  </a-entity>
+  </a-camera>
 </a-entity>
     
     <!-- add light -->
@@ -93,7 +113,7 @@
     <a-plane src="#floor" rotation="-90 0 0" width="50" height="50" position="0 0 0"></a-plane>
 
     <!-- welcome screen   -->
-    <a-plane material="src:#welcome; scale:0.1" opacity="0.9" width="6" height="6" position="0 1.6 -2" checkpoint="offset:0 -1.6 -12"></a-plane>
+    <a-plane material="src:#welcome" opacity="0.95" width="6" height="6" position="0 1.6 -2" checkpoint="offset:0 -1.6 -10"></a-plane>
     <!-- import 3d gallery -->
     <a-entity position="0 0 -6">
       <a-entity gltf-model="#gallery"></a-entity>
@@ -101,6 +121,33 @@
       <a-entity gltf-model="#moma_s"></a-entity>
       <a-entity gltf-model="#interior_s"></a-entity>
 
+      <a-image src="#gps" 
+      id="link_p1" 
+      scale="0.5 0.5 0.5" 
+      position="-1.56 1.6 -8" 
+      look-at="#cam"
+      event-set__mouseenter="color:#f71" 
+      event-set__mouseleave="color:#ff0" 
+      navigate-on-click="url: teahouse.html"
+      ></a-image>
+      <a-image src="#gps" 
+      id="link_p2" 
+      scale="0.5 0.5 0.5" 
+      position="1.56 1.6 -8" 
+      look-at="#cam"
+      event-set__mouseenter="color:#f71" 
+      event-set__mouseleave="color:#ff0" 
+      navigate-on-click="url: index.html"
+      ></a-image>
+      <a-image src="#gps" 
+      id="link_p3" 
+      scale="0.5 0.5 0.5" 
+      position="0 1.6 -10.45" 
+      look-at="#cam"
+      event-set__mouseenter="color:#f71" 
+      event-set__mouseleave="color:#ff0" 
+      navigate-on-click="url: index.html"
+      ></a-image>
       <!-- paste poster of booth 1 -->
         <a-entity 
           id="p1_p1"  
