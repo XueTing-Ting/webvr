@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interior</title>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+	<script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@5.1.2/dist/aframe-animation-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script>
+        AFRAME.registerComponent('navigate-on-click', {
+          schema: {
+            url: {default: ''}
+          },
+      
+          init: function () {
+            var data = this.data;
+            var el = this.el;
+      
+            el.addEventListener('click', function () {
+              window.location.href = data.url;
+            });
+          }
+        });        
+      </script>
+</head>
+<body>
+    <a-scene>
+        <a-assets>
+            <a-asset-item id="structure" src="./assets/p3/structure.glb"></a-asset-item>
+            <img id="gps" src="./assets/gps.png">
+            <img id="arrow" src="./assets/arrow.png">
+            <img id="up" src="assets/up.png">
+            <img id="home" src="./assets/home.png">
+        </a-assets>
+
+         <!-- Add camera -->
+         <a-entity id="rig"
+         movement-controls="controls: checkpoint"
+         checkpoint-controls="mode: animate">
+           <a-camera 
+           id="cam"
+           position="0 1.6 0"
+           fuse="false"
+           look-controls="pointerLockEnabled: false">
+           <a-cursor></a-cursor>
+           </a-camera>
+       </a-entity>
+
+         <!-- Add model -->
+         <a-entity>
+            <a-entity gltf-model="#structure" position="3 0 1" shadow="cast: false">
+                <a-entity id="location_A" position="-3 0 -3.7">
+                    <a-image src="#gps" position="0 2 1" checkpoint="offset:0 -2 -1"  event-set__mouseenter="color:#f71" 
+                    event-set__mouseleave="color:#ff0" look-at="#cam"></a-image>
+                    <a-image src="#arrow" scale="0.5 0.5 0.5" class="left" position="-0.8 1 -1" rotation="0 0 0" checkpoint="offset:-2.9 -1 -1.3"></a-image>
+                    <a-image src="#arrow" scale="0.5 0.5 0.5" class="front" position="0 1 -2" rotation="0 0 -90" checkpoint="offset:-1.58 0.6 -2.8"></a-image>
+                    <a-image src="#arrow" scale="0.5 0.5 0.5" class="right" position="0.8 1 -1" rotation="0 0 180" checkpoint="offset:7.9 -1 -2.45"></a-image>
+                    <a-image src="#home" position="0 0.8 -1" rotation="-90 0 0" color="#ff0" navigate-on-click="url: index.html"></a-image>
+                </a-entity>
+                <a-entity id="location_B" position="-6.7 0 -6">
+                    <a-image src="#gps" scale="0.8 0.8 0.8" position="0 2 0" checkpoint="offset:0 -2 0"  event-set__mouseenter="color:#f71" 
+                    event-set__mouseleave="color:#ff0" look-at="#cam"></a-image>
+                    <a-image src="#arrow" scale="0.5 0.5 0.5" class="right" position="0.8 1 -1" rotation="0 0 180" checkpoint="offset:2.9 -1 3.3"></a-image>
+                </a-entity>
+                
+                <a-entity id="location_D" position="-6.85 2.6 -7.3">
+                    <a-image src="#gps" position="0 2 0" checkpoint="offset:0 -2 0"  event-set__mouseenter="color:#f71" 
+                    event-set__mouseleave="color:#ff0" look-at="#cam"></a-image>
+                    <a-image src="#arrow" scale="0.5 0.5 0.5" class="left" position="0.8 1 1" rotation="0 0 180" checkpoint="offset:1.35 -1 1.5"></a-image>
+                </a-entity>
+                <a-entity id="location_E" position="-4.7 2.6 -5">
+                  <a-image src="#gps" position="0.5 2 0" checkpoint="offset:-0.5 -2 0"  event-set__mouseenter="color:#f71" 
+                  event-set__mouseleave="color:#ff0" look-at="#cam"></a-image>
+                  <a-image src="#arrow" scale="0.5 0.5 0.5" class="left" position="0 1 -1" rotation="0 0 180" checkpoint="offset:1.7 -3.6 2.3"></a-image>
+                  <a-image src="#arrow" scale="0.5 0.5 0.5" class="right" position="0 1 1" rotation="0 0 0" checkpoint="offset:-2.15 -1 -3.5"></a-image>
+              </a-entity>
+              <a-entity id="location_F" position="5.7 0 -7.15">
+                <a-image src="#gps" position="0 2 0" checkpoint="offset:0 -2 0"  event-set__mouseenter="color:#f71" 
+                event-set__mouseleave="color:#ff0" look-at="#cam"></a-image>
+                <a-image src="#arrow" scale="0.5 0.5 0.5" class="left" position="-0.8 1 -1" rotation="0 0 0" checkpoint="offset:-7.9 -1 4.45"></a-image>
+            </a-entity>
+            <a-light id="l_1" type="ambient" intensity="0.8" color="#fff" castShadow="false"></a-light>
+            <a-entity id="l_2" light="type:point;intensity:0.3;distance:50;decay:1;castShadow:false" position="0 3.5 -5"></a-entity>
+            </a-entity>
+                </a-scene>
+</body>

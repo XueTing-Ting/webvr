@@ -30,10 +30,10 @@
       </script>
 </head>
 <body>
-    <a-scene background="color: FFFFFF" inspector-plugin-recast>
+    <a-scene>
         <a-assets>
             <a-asset-item id="site" src="./assets/p1/site.glb"></a-asset-item>
-            <a-asset-item id="structure" src="./assets/p1/teahouse2.glb"></a-asset-item>
+            <a-asset-item id="structure" src="./assets/p1/structure.glb"></a-asset-item>
             <img id="gps" src="./assets/gps.png">
             <img id="water" src="./assets/p1/water.jpg">
             <img id="arrow" src="./assets/arrow.png">
@@ -55,46 +55,52 @@
 
        <!-- Add model -->
        <a-plane src="#water" width="120" height="120" rotation="-90 0 0" position="0 -1 0"></a-plane>
-       <a-sky src="#sky" radius="60" opacity="0.8"></a-sky>
+       <a-sky src="#sky" opacity="0.8"></a-sky>
         <a-entity>
             <a-entity id="site_model" gltf-model="#site" position="0 0 0" shadow="cast: true">
                 <a-entity id="location_A" position="0 0 -5">
-                    <a-image src="#gps" position="0 2 1" checkpoint="offset:0 -2 -1"></a-image>
+                    <a-image src="#gps" position="0 2 1" checkpoint="offset:0 -2 -1" event-set__mouseenter="color:#f71" 
+                    event-set__mouseleave="color:#ff0" ></a-image>
                     <a-image src="#arrow" class="left" position="-1.2 1 -1.5" rotation="90 0 0" checkpoint="offset:-6.2 1.8 -25.5"></a-image>
                     <a-image src="#arrow" class="front" position="0 1 -2.5" rotation="90 -90 0" checkpoint="offset:3 3.9 -15.5"></a-image>
                     <a-image src="#arrow" class="right" position="1.2 1 -1.5" rotation="90 0 180" checkpoint="offset:8.8 1.7 -16.5"></a-image>
                     <a-image src="#home" position="0 1 -1" rotation="-90 0 0" color="#ff0" navigate-on-click="url: index.html"></a-image>
                 </a-entity>
                 <a-entity id="location_B" position="3 4.9 -23">
-                    <a-image src="#gps" position="0 2 1" checkpoint="offset:0 -2 -1"></a-image>
+                    <a-image src="#gps" position="0 2 1" checkpoint="offset:0 -2 -1" event-set__mouseenter="color:#f71" 
+                    event-set__mouseleave="color:#ff0" ></a-image>
                     <a-image src="#arrow" scale="0.5 0.5 0.5" class="left" position="-1 1.5 -1.5" rotation="0 0 0" checkpoint="offset:-9.4 -3.6 -7.5"></a-image>
                     <a-image src="#arrow" scale="0.5 0.5 0.5" class="front" position="0 1.8 -2.5" rotation="0 0 -90" checkpoint="offset:2 -0.3 -6.5"></a-image>
                     <a-image src="#arrow" scale="0.5 0.5 0.5" class="right" position="1 1.5 -1.5" rotation="0 0 180" checkpoint="offset:5.6 -3.7 1.5"></a-image>
                     <a-image src="#home" position="0 1 -1" rotation="-90 0 0" color="#ff0" navigate-on-click="url: index.html"></a-image>
                 </a-entity>
                 <a-entity id="location_C" position="-7.4 2.8 -32">
-                    <a-image src="#gps" position="0 2 1" checkpoint="offset:0 -2 -1"></a-image>
+                    <a-image src="#gps" position="0 2 1" checkpoint="offset:0 -2 -1" event-set__mouseenter="color:#f71" 
+                    event-set__mouseleave="color:#ff0" ></a-image>
                     <!-- <a-image src="#arrow" class="left" position="-1.2 1 -1.5" rotation="90 0 0" checkpoint="offset:-6.2 0.7 -25.5"></a-image> -->
                     <a-image src="#arrow" class="front" position="0 1 -2.5" rotation="90 -90 0" checkpoint="offset:12.4 2.6 2.5"></a-image>
                     <a-image src="#arrow" class="right" position="1.2 1 -1.5" rotation="90 0 180" checkpoint="offset:9.2 1.1 10.5"></a-image>
                     <a-image src="#home" position="0 1 -1" rotation="-90 0 0" color="#ff0" navigate-on-click="url: index.html"></a-image>
                 </a-entity>
                 <a-entity id="location_D" position="10 2.7 -23">
-                    <a-image src="#gps" position="0 2 1" checkpoint="offset:0 -2 -1"></a-image>
+                    <a-image src="#gps" position="0 2 1" checkpoint="offset:0 -2 -1" event-set__mouseenter="color:#f71" 
+                    event-set__mouseleave="color:#ff0" ></a-image>
                     <a-image src="#arrow" class="left" position="-1.2 1 -1.5" rotation="90 0 0" checkpoint="offset:-5.8 1.2 1.5"></a-image>
                     <a-image src="#arrow" class="front" position="0 1 -2.5" rotation="90 -90 0" checkpoint="offset:-5 2.7 -6.5"></a-image>
                     <a-image src="#arrow" class="right" position="1.2 1 -1.5" rotation="90 0 180" checkpoint="offset:7 -1.5 -2.5"></a-image>
                     <a-image src="#home" position="0 1 -1" rotation="-90 0 0" color="#ff0" navigate-on-click="url: index.html"></a-image>
                 </a-entity>
                 <a-entity id="location_E" position="18 2.2 -27">
-                    <a-image src="#gps" position="0 2 1" checkpoint="offset:0 -2 -1"></a-image>
+                    <a-image src="#gps" position="0 2 1" checkpoint="offset:0 -2 -1" event-set__mouseenter="color:#f71" 
+                    event-set__mouseleave="color:#ff0" ></a-image>
                     <a-image src="#arrow" class="left" position="-1.2 1 -1.5" rotation="90 0 0" checkpoint="offset:-6.8 -0.5 5.5"></a-image>
                     <!-- <a-image src="#arrow" class="front" position="0 1 -2.5" rotation="90 -90 0" checkpoint="offset:-5 2.7 -6.5"></a-image>
                     <a-image src="#arrow" class="right" position="1.2 1 -1.5" rotation="90 0 180" checkpoint="offset:7 -1.5 -2.5"></a-image> -->
                     <a-image src="#home" position="0 1 -1" rotation="-90 0 0" color="#ff0" navigate-on-click="url: index.html"></a-image>
                 </a-entity>
                 <a-entity id="location_F" position="5 6.4 -32">
-                    <a-image src="#gps" position="0 2 1" checkpoint="offset:0 -2 -1"></a-image>
+                    <a-image src="#gps" position="0 2 1" checkpoint="offset:0 -2 -1" event-set__mouseenter="color:#f71" 
+                    event-set__mouseleave="color:#ff0" ></a-image>
                     <a-image src="#arrow" class="left" position="-1.2 1 -1.5" rotation="90 0 0" checkpoint="offset:-11.2 -4.6 1.5"></a-image>
                     <a-image src="#arrow" class="front" position="0 1 -2.5" rotation="90 90 0" checkpoint="offset:-2 -2.5 11.5"></a-image>
                     <a-image src="#arrow" class="right" position="1.2 1 -1.5" rotation="90 0 180" checkpoint="offset:3.8 -4.7 10.5"></a-image>
@@ -106,11 +112,11 @@
 
        
         <!-- Add light to the scene -->
-        <a-light type="directional" intensity="1" color="#fff" position="0 15 5" castShadow="false"></a-light>
-        <a-entity light="type:point;intensity:1;color:#ff0;distance:50;decay:1;castShadow:false" position="0 5 -5"></a-entity>
-        <a-entity light="type:point;intensity:2;distance:50;decay:1;castShadow:false" position="0 3 -10"></a-entity>
-        <a-entity light="type:point;intensity:2;distance:50;decay:1;castShadow:false" position="-7 3 -30"></a-entity>
-        <a-entity light="type:point;intensity:2;distance:50;decay:1;castShadow:false" position="5 6.7 -32"></a-entity> 
+        <a-light id="l_1" type="directional" intensity="0.5" color="#fff" position="5 15 15" castShadow="false"></a-light>
+        <a-entity id="l_2" light="type:point;intensity:0.5;color:#ff0;distance:30;decay:1;castShadow:false" position="1 4.7 -4.6"></a-entity>
+        <a-entity id="l_3" light="type:point;intensity:0.3;distance:50;decay:1;castShadow:false" position="0 3 -10"></a-entity>
+        <a-entity id="l_4" light="type:point;intensity:1;distance:50;decay:1;castShadow:false" position="-7 7 -30" color="#cc0"></a-entity>
+        <a-entity id="l_5" light="type:point;intensity:1;distance:50;decay:1;castShadow:false" position="4 10 -32" color="#cc0"></a-entity> 
         </a-entity>
         
     </a-scene>
